@@ -1,0 +1,11 @@
+<div class="result-container">
+  <h2>Warranty Check Result</h2>
+  <p><strong>IMEI:</strong> {{ imei }}</p>
+  <p><strong>Receipt Date:</strong> {{ receiptDate }}</p>
+  <div *ngIf="isWithinWarranty === true" style="color: green;">
+    Device is <strong>within warranty</strong>. Technician may proceed.
+  </div>
+  <div *ngIf="isWithinWarranty === false" style="color: red;">
+    Device is <strong>out of warranty</strong>. Please inform the customer.
+  </div>
+</div>

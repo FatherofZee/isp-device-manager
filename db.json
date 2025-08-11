@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "cuid": "shop001",
+      "password": "shop123",
+      "role": "shop"
+    },
+    {
+      "id": 2,
+      "cuid": "tech001",
+      "password": "tech123",
+      "role": "technician"
+    }
+  ],
+  "acceptanceForms": [],
+  "technicianForms": []
+}

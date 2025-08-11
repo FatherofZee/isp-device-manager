@@ -1,0 +1,85 @@
+<div class="form-container">
+  <h2>Handset Acceptance Form</h2>
+  <form (ngSubmit)="onSubmit()" #acceptanceForm="ngForm">
+    <div class="form-group">
+      <label for="makeModel">Handset Make & Model</label>
+      <input id="makeModel" name="makeModel" [(ngModel)]="form.makeModel" required />
+    </div>
+
+    <div class="form-group">
+      <label>Handset Box Contents</label>
+      <div>
+        <label><input type="checkbox" [(ngModel)]="form.box.battery" name="battery" /> Battery</label><br>
+        <label><input type="checkbox" [(ngModel)]="form.box.charger" name="charger" /> Charger</label><br>
+        <label><input type="checkbox" [(ngModel)]="form.box.dataCord" name="dataCord" /> Data Cord</label><br>
+        <label><input type="checkbox" [(ngModel)]="form.box.simCard" name="simCard" /> Sim Card</label><br>
+        <label><input type="checkbox" [(ngModel)]="form.box.mediaCd" name="mediaCd" /> Media CD</label><br>
+        <label><input type="checkbox" [(ngModel)]="form.box.memoryCard" name="memoryCard" /> Memory Card</label><br>
+        <label><input type="checkbox" [(ngModel)]="form.box.earphones" name="earphones" /> Earphones</label><br>
+        <label><input type="checkbox" [(ngModel)]="form.box.dataBackup" name="dataBackup" /> Customer Data Back up</label><br>
+        <label><input type="checkbox" [(ngModel)]="form.box.receiptCopy" name="receiptCopy" /> Copy of Customer Receipt</label><br>
+        <!-- Replace these checkboxes with text fields: -->
+        <label>IMEI: <input type="text" [(ngModel)]="form.box.IMEI" name="IMEI" (blur)="onIMEIBlur()" /></label><br>
+        <span *ngIf="warrantyResult !== null">
+          Warranty: <b>{{ warrantyResult ? 'Yes' : 'No' }}</b>
+        </span>
+        <label>PIN: <input type="text" [(ngModel)]="form.box.PIN" name="PIN" /></label><br>
+        <label>Password: <input type="text" [(ngModel)]="form.box.password" name="password" /></label><br>
+        <label>Security Code: <input type="text" [(ngModel)]="form.box.securityCode" name="securityCode" /></label><br>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="diagnosis">Customer Diagnosis or Requirements</label>
+      <textarea id="diagnosis" name="diagnosis" [(ngModel)]="form.diagnosis"></textarea>
+    </div>
+    <!--
+    <div class="form-group">
+      <label>Email Requirements</label>
+      <div>
+        <input placeholder="Email account" [(ngModel)]="form.email.account" name="emailAccount" />
+        <input placeholder="Password" [(ngModel)]="form.email.password" name="emailPassword" />
+        <input placeholder="POP/IMAP" [(ngModel)]="form.email.popimap" name="emailPopimap" />
+        <input placeholder="Username" [(ngModel)]="form.email.username" name="emailUsername" />
+      </div>
+    </div>
+  -->
+
+    <div class="form-group">
+      <label>Acceptance Details</label>
+      <input placeholder="Customer Full Name" [(ngModel)]="form.customerName" name="customerName" />
+      <input placeholder="Customer Cell Number" [(ngModel)]="form.customerCell" name="customerCell" />
+      <input placeholder="Technician Full Name" [(ngModel)]="form.techName" name="techName" />
+      <input placeholder="Technician Cell Number" [(ngModel)]="form.techCell" name="techCell" />
+      <input placeholder="Alternate Number" [(ngModel)]="form.altNumber" name="altNumber" />
+      <input placeholder="Date and Time" type="datetime-local" [(ngModel)]="form.dateTime" name="dateTime" />
+      <input placeholder="Estimated Duration" [(ngModel)]="form.estimatedDuration" name="estimatedDuration" />
+    </div>
+
+    <div class="form-group">
+      <label>Customer Signature</label>
+      <input type="file" (change)="onCustomerSignature($event)" />
+      <span *ngIf="customerSignature">{{ customerSignature.name }}</span>
+    </div>
+    <div class="form-group">
+      <label>Technician/Shop Assistant Signature</label>
+      <input type="file" (change)="onTechSignature($event)" />
+      <span *ngIf="techSignature">{{ techSignature.name }}</span>
+    </div>
+
+    <div class="form-group">
+      <small>
+        Disclaimer: Orange Botswana (Pty) Ltd shall not be held liable for any loss, impairment or corruption of data and malfunctioning during and subsequent to the maintenance or repair of any device or Personal Computer...
+      </small>
+    </div>
+
+    <div class="form-group" style="display: flex; gap: 1rem;">
+      <button type="submit">Submit</button>
+      <button type="button" (click)="backToDashboard()">Back to Dashboard</button>
+    </div>
+  </form>
+
+  <a *ngIf="technicianLink" [href]="technicianLink" target="_blank">
+    Open Technician Form
+  </a>
+</div>

@@ -1,0 +1,65 @@
+.dashboard-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem 2.5rem 1.5rem 2.5rem;
+  background: #fffbea;
+  border: 1px solid #f5e5b8;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+h2 {
+  text-align: center;
+  color: #ff7900;
+}
+
+h3 {
+  color: #ff7900;
+  margin-top: 2rem;
+}
+
+button {
+  background-color: #ff7900;
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+button:hover {
+  background-color: #e86c00;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #fff6dc;
+  border: 1px solid #f5e5b8;
+  border-radius: 6px;
+  margin-bottom: 0.7rem;
+  padding: 0.7rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+li button {
+  margin-left: 1rem;
+  padding: 0.7rem 1.2rem;
+  background-color: #ff7900;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+li button:hover {
+  background-color: #e86c00;
+}
