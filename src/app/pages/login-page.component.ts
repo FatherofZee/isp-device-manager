@@ -1,33 +1,47 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent {
-  username = '';
-  password = '';
-  role: 'technician' | 'shop' | '' = '';
+  loginForm = {
+    cuid: '',
+    password: '',
+    selectedRole: ''
+  };
+  errorMessage = '';
 
-  constructor(private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
-  onLogin() {
-    if (!this.role) {
-      alert('Please select a role.');
-      return;
-    }
-    // For demo, just store role and redirect
-    localStorage.setItem('userRole', this.role);
-    if (this.role === 'shop') {
-      this.router.navigate(['/shop-dashboard']);
-    } else if (this.role === 'technician') {
-      this.router.navigate(['/technician-dashboard']);
-    }
+  login() {
+    this.errorMessage = '';
+    this.http.get<any[]>('http://localhost:3000/users').subscribe(users => {
+      const user = users.find(u =>
+        u.cuid === this.loginForm.cuid &&
+        u.password === this.loginForm.password &&
+        u.role === this.loginForm.selectedRole
+      );
+      if (user) {
+        localStorage.setItem('userRole', user.role);
+        localStorage.setItem('cuid', user.cuid);
+        if (user.role === 'shop') {
+          this.router.navigate(['/shop-dashboard']);
+        } else if (user.role === 'technician') {
+          this.router.navigate(['/technician-dashboard']);
+        }
+      } else {
+        this.errorMessage = 'Invalid credentials or role selected!';
+      }
+    }, err => {
+      this.errorMessage = 'Unable to connect to server.';
+    });
   }
 }

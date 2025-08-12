@@ -37,7 +37,7 @@
     </div>
     <div class="form-group" style="display: flex; gap: 1rem;">
       <input type="text" [(ngModel)]="formData.technicianName" name="technicianName" placeholder="Support Technician Name" />
-      <input type="text" [(ngModel)]="formData.technicianSignature" name="technicianSignature" placeholder="Support Technician Signature" />
+      <input type="text" [(ngModel)]="formData.technicianCUID" name="technicianCUID" placeholder="Support Technician CUID" />
     </div>
     <div class="form-group">
       <label>Date Received:</label>
@@ -74,11 +74,14 @@
         <input type="date" [(ngModel)]="formData.collectionDate" name="collectionDate" />
       </div>
     </div>
-   <div class="form-group">
+   
+    <!--
+    <div class="form-group">
       <label>Customer Signature:</label>
       <input type="file" (change)="onCustomerSignatureUpload($event)" accept="image/*" />
       <span *ngIf="customerSignature">{{ customerSignature.name }}</span>
     </div>
+    -->
 
     <div class="form-group">
       <label>Technician Signature</label>
@@ -123,3 +126,9 @@
     </ul>
   </div>
 </div>
+
+<!-- Back to Dashboard button at the bottom -->
+<div style="text-align: center; margin-top: 40px;">
+  <button class="back-btn" type="button" (click)="backToDashboard()">Back to Technician Dashboard</button>
+</div>
+

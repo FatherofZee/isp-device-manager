@@ -2,15 +2,16 @@
   <img src="assets/orange-logo.png" alt="Logo" class="login-logo" />
   <div class="login-card">
     <div class="login-header">Device Management Portal Login</div>
-    <form (ngSubmit)="onLogin()" #loginForm="ngForm">
-      <input [(ngModel)]="username" name="username" placeholder="cuid" required />
-      <input [(ngModel)]="password" name="password" type="password" placeholder="Password" required />
-      <select [(ngModel)]="role" name="role" required>
-        <option value="" disabled selected>Select role</option>
+    <form (ngSubmit)="login()">
+      <input [(ngModel)]="loginForm.cuid" name="cuid" placeholder="CUID" required />
+      <input [(ngModel)]="loginForm.password" name="password" type="password" placeholder="Password" required />
+      <select [(ngModel)]="loginForm.selectedRole" name="selectedRole" required>
+        <option value="" disabled selected>Select Role</option>
         <option value="shop">Shop Assistant</option>
         <option value="technician">Technician</option>
       </select>
       <button type="submit">Login</button>
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
     </form>
   </div>
 </div>

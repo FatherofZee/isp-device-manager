@@ -47,13 +47,15 @@
 
     <div class="form-group">
       <label>Acceptance Details</label>
-      <input placeholder="Customer Full Name" [(ngModel)]="form.customerName" name="customerName" />
-      <input placeholder="Customer Cell Number" [(ngModel)]="form.customerCell" name="customerCell" />
-      <input placeholder="Technician Full Name" [(ngModel)]="form.techName" name="techName" />
-      <input placeholder="Technician Cell Number" [(ngModel)]="form.techCell" name="techCell" />
-      <input placeholder="Alternate Number" [(ngModel)]="form.altNumber" name="altNumber" />
-      <input placeholder="Date and Time" type="datetime-local" [(ngModel)]="form.dateTime" name="dateTime" />
-      <input placeholder="Estimated Duration" [(ngModel)]="form.estimatedDuration" name="estimatedDuration" />
+      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+        <input style="flex: 1 1 220px; min-width: 220px;" placeholder="Customer Full Name" [(ngModel)]="form.customerName" name="customerName" />
+        <input style="flex: 1 1 180px; min-width: 180px;" placeholder="Customer Cell Number" [(ngModel)]="form.customerCell" name="customerCell" />
+        <input style="flex: 1 1 260px; min-width: 260px;" placeholder="Technician/Shop Assistant Full Name" [(ngModel)]="form.techName" name="techName" />
+        <input style="flex: 1 1 220px; min-width: 220px;" placeholder="Technician/Shop Assistant Cell Number" [(ngModel)]="form.techCell" name="techCell" />
+        <input style="flex: 1 1 180px; min-width: 180px;" placeholder="Alternate Number" [(ngModel)]="form.altNumber" name="altNumber" />
+        <input style="flex: 1 1 220px; min-width: 220px;" placeholder="Date and Time" type="datetime-local" [(ngModel)]="form.dateTime" name="dateTime" />
+        <input style="flex: 1 1 180px; min-width: 180px;" placeholder="Estimated Duration" [(ngModel)]="form.estimatedDuration" name="estimatedDuration" />
+      </div>
     </div>
 
     <div class="form-group">
