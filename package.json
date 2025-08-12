@@ -13,10 +13,10 @@
     "overrides": [
       {
         "files": "*.html",
-        "options": {
+           "options": {
           "parser": "angular"
         }
-      }
+      }      
     ]
   },
   "private": true,

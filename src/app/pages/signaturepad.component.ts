@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-signaturepad',
   imports: [],
   templateUrl: './signaturepad.component.html',
-  styleUrl: './signaturepad.component.css'
+  styleUrls: ['./signaturepad.component.css'] // <-- fixed here
 })
 export class SignaturepadComponent {
 
