@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import jsPDF from 'jspdf';
 
+
 @Component({
   selector: 'app-technician-form',
   standalone: true,

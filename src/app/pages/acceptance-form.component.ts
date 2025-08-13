@@ -12,6 +12,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   styleUrls: ['./acceptance-form.component.css']
 })
 export class AcceptanceFormComponent {
+recommendations: any;
+openPdf(item: any) {
+  window.open(item.pdfUrl, '_blank');
+}
   form: any = {
     makeModel: '',
     box: {
@@ -45,13 +49,15 @@ export class AcceptanceFormComponent {
     dateTime: '',
     estimatedDuration: '',
     customerSignature: '',
-    techSignature: ''
+    techSignature: '',
+    pdfUrl: '' // <-- Add this line
   };
 
   customerSignature: File | null = null;
   techSignature: File | null = null;
   technicianLink: string = '';
   warrantyResult: boolean | null = null;
+acceptanceForms: any;
 
   constructor(
     private http: HttpClient,
@@ -85,6 +91,9 @@ export class AcceptanceFormComponent {
   }
 
   onSubmit() {
+    // Example: after generating and uploading the PDF, set the URL
+    // this.form.pdfUrl = 'https://your-server.com/pdfs/form-123.pdf';
+
     // Save to mock API (json-server)
     this.http.post<any>('http://localhost:3000/acceptanceForms', this.form).subscribe({
       next: (result) => {

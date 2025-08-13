@@ -85,3 +85,10 @@
     Open Technician Form
   </a>
 </div>
+
+<div>
+  <h3>All Acceptance Forms</h3>
+  <div *ngFor="let form of acceptanceForms">
+    <button (click)="openPdf(form)">View {{ form.customerName }}</button>
+  </div>
+</div>
